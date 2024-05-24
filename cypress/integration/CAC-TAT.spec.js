@@ -7,11 +7,11 @@ describe('Central de Atendimento ao Cliente TAT', function () {
   })
 
   it('preenche os campos obrigatórios e envia o formulário', function () {
-    cy.contains('#firstName').type('Diego', { delay: 1000 })
+    cy.get('#firstName').type('Diego', { delay: 1000 })
     cy.get('#lastName').type('de Oliveira Suzuki')
     cy.get('#email').type('teste@tesste.com')
     cy.get('#open-text-area').type('quero aprender cypress')
-    cy.get('.button').click()
+    cy.contains('Enviar').click()
     cy.get('.success').should('be.visible')
   })
 
@@ -20,7 +20,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     cy.get('#lastName').type('de Oliveira Suzuki')
     cy.get('#email').type('testetesste.com')
     cy.get('#open-text-area').type('quero aprender cypress')
-    cy.get('.button').click()
+    cy.contains('Enviar').click()
     cy.get('.error').should('be.visible')
   })
 
@@ -32,7 +32,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
   it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
     cy.get('#phone').should('be.empty')
     cy.get('#phone-checkbox').click()
-    cy.get('.button').click()
+    cy.contains('Enviar').click()
     cy.get('.error').should('be.visible')
   })
 
@@ -46,7 +46,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
   })
 
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function (){
-    cy.get('.button').click()
+    cy.contains('Enviar').click()
     cy.get('.error').should('be.visible')
   })
 
