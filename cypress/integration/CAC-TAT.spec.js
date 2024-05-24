@@ -52,6 +52,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
 
   it('envia o formuário com sucesso usando um comando customizado', function (){
     cy.fillMandatoryFieldsAndSubmit('Diego', 'de Oliveira Suzuki', 'teste@commands.com', 'teste command')
+    cy.get('.success').should('be.visible')
   })
 
 })

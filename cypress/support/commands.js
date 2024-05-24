@@ -26,11 +26,10 @@
 
 Cypress.Commands.add('fillMandatoryFieldsAndSubmit', (name, lastName, email, text) => {
 
-    cy.get('#firstName').type(name, { delay: 1000 })
+    cy.get('#firstName').type(name)
     cy.get('#lastName').type(lastName)
     cy.get('#email').type(email)
     cy.get('#open-text-area').type(text)
     cy.get('.button').click()
-    cy.get('.success').should('be.visible')
 
   })
